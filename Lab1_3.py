@@ -15,4 +15,4 @@ for i in range(len(args.formula) - 1):
             result = False
 if result:
     result_value = eval(args.formula)
-print('(', result, '/', result_value, ')')
+print(f'({result}/{result_value})')
