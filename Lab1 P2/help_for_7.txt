@@ -1,0 +1,5 @@
+Pasta p1.30 w0.5
+Pork p6.50 w1
+Tomato p3 w1
+Ketchup p2.7 w0.5
+Eggs p2.20 w0.6
