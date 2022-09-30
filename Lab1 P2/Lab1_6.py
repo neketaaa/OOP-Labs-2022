@@ -1,9 +1,6 @@
 import argparse
 
 class Rational:
-    numerator = 1
-    denominator = 1
-
     def __init__(self, num_value = 1, den_value = 1):
         self.numerator = num_value
         self.denominator = den_value

@@ -1,8 +1,4 @@
 class Product:
-    price = 0
-    description = None
-    weight = 0.
-
 
     def __init__(self, price_val, description_val, weight_val):
         self.price = price_val
@@ -15,10 +11,6 @@ class Product:
 
 
 class Customer:
-    surname = None
-    name = None
-    patronymic = None
-    mob_phone = None
 
     def get(self):
         return self
