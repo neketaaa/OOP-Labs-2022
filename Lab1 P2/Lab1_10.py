@@ -23,22 +23,16 @@ class BinaryTree:
         self.right = BinaryTree(data)
 
     def search(self, code, quantity):
-        print(self.data)
         if self.data[0] == code:
-            print(float(self.data[1]) * int(quantity))
-            return float(self.data[1])
+            return float(self.data[1] * int(quantity))
 
         if self.data[0] > code:
             if self.left:
-                self.left.search(code, quantity)
-                return
-            print('l')
+                return self.left.search(code, quantity)
             return 0.
 
         if self.right:
-            self.right.search(code, quantity)
-            return
-        print('r')
+            return self.right.search(code, quantity)
         return 0.
 
 def main():
@@ -52,9 +46,10 @@ def main():
         if code == 'S' or code == 's':
             break
         quantity = input('Enter quantity: ')
-
-        print(f'Price: {shop.search(int(code), quantity)}')
-
+        try:
+            print(f'Price: {shop.search(int(code), quantity)}')
+        except ValueError:
+            print('Wrong argument type')
 if __name__ == '__main__':
     main()
 
