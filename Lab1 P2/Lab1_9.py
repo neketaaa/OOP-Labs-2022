@@ -64,8 +64,8 @@ def main():
     group.add(Student('Tolia', 'Romanin', 2, grades_exmpl2))
     group.add(Student('Roma', 'Pchelintsev', 3, grades_exmpl3))
     group.add(Student('Sofiia','Naumchenko', 4, grades_exmpl4))
-    group.add(Student('Pervushen', 'Robert', 5, grades_exmpl5))
-    group.add(Student('Storozh', 'Denchick', 6, grades_exmpl6))
+    group.add(Student('Pervushen', 'Maksim', 5, grades_exmpl5))
+    group.add(Student('Kozachenko', 'Denis', 6, grades_exmpl6))
 
     group.best_stud()
     print()

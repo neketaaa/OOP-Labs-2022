@@ -7,10 +7,8 @@ class Rational:
 
         for i in range(min(num_value, den_value), 0, -1):
             if not (int(num_value) / i) and not (int(den_value) / i):
-                print(i)
                 self.numerator = int(num_value / i)
                 self.denominator = int(den_value / i)
-                print(self.denominator, self.numerator)
                 break
 
     def printer_int(self):

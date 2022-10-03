@@ -67,19 +67,6 @@ def main():
 
     print(example.show())
 
-    # desc_val = None
-    # price_val = 0.
-    # weight_val = 0.
-    # with open('help_for_7.txt', 'r') as file:
-    #     for line in file:
-    #         for word in line.split(' '):
-    #             match word[0]:
-    #                 case 'p': price_val = float(word)
-    #                 case 'w': weight_val = float(word)
-    #                 case _: desc_val += word
-
-
-
 
 if __name__ == '__main__':
     main()
