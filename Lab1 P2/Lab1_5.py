@@ -9,10 +9,14 @@ class Rectangle:
         return self.length * self.width
 
     def set(self, length_value: float, width_value: float):
-        if 20. > length_value > 0.:
+        if isinstance(length_value, float | int) and 20. > length_value > 0.:
             self.length = length_value
-        if 20. > width_value > 0.:
+        else:
+            raise ValueError
+        if isinstance(width_value, float | int) and 20. > width_value > 0.:
             self.width = width_value
+        else:
+            raise ValueError
 
     def get(self):
         return f'length: {self.length} width: {self.width}'
