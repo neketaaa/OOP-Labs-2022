@@ -16,11 +16,11 @@ class Statistic:
 
 
     def show(self):
-        print(f'lines: {self.lines} words: {self.words} letters: {self.letters}')
+        return f'lines: {self.lines} words: {self.words} letters: {self.letters}'
 
 def main():
     file = Statistic(input("filename: "))
-    file.show()
+    print(file.show())
 
 if __name__ == "__main__":
     main()
