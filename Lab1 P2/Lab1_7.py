@@ -1,13 +1,15 @@
 class Product:
 
     def __init__(self, price_val, description_val, weight_val):
-        self.price = price_val
-        self.description = description_val
-        self.weight = weight_val
+        if isinstance(price_val, float | int) and price_val:
+            self.price = price_val
+            self.description = description_val
+            self.weight = weight_val
+        else:
+            raise ValueError
 
     def show(self):
-        print(f'{self.description} price: {self.price} weight: {self.weight}')
-
+        return f'{self.description} price: {self.price} weight: {self.weight}'
 
 
 class Customer:
@@ -22,7 +24,7 @@ class Customer:
         self.mob_phone = mob_phone_val
 
     def show(self):
-        print(self.surname, self.name, self.patronymic, self.mob_phone)
+        return f'{self.surname} {self.name} {self.patronymic} {self.mob_phone}'
 
 
 class Order:
@@ -30,21 +32,27 @@ class Order:
     products = []
 
     def __init__(self, customer_val: Customer):
-        self.customer = customer_val
+        if isinstance(customer_val, Customer):
+            self.customer = customer_val
+        else:
+            raise ValueError
 
-    def add_product(self, product: Product):
-        self.products.append(product)
+    def add_product(self, product: Product, quantity=1):
+        if isinstance(product, Product) and isinstance(quantity, int):
+            self.products.append((product, quantity))
+        else:
+            raise ValueError
 
     def total_order(self):
         total = 0
         for i in range(len(self.products)):
-            total += self.products[i].price
+            total += self.products[i][0].price * self.products[i][1]
         return total
 
     def show(self):
-        self.customer.show()
+        print(self.customer.show())
         for i in range(len(self.products)):
-            self.products[i].show()
+            print(f'{self.products[i][1]} x {self.products[i][0].show()}')
         print(f'Total: {self.total_order()}')
 
 
@@ -59,7 +67,7 @@ def main():
     pork = Product(6.5, 'Pork', 1)
     example.add_product(pork)
     tomato = Product(3.3, 'Tomato', 1)
-    example.add_product(tomato)
+    example.add_product(tomato,3)
     ketchup = Product(2.7, 'Ketchup', 0.5)
     example.add_product(ketchup)
     eggs = Product(2.2, 'Eggs', 0.6)
