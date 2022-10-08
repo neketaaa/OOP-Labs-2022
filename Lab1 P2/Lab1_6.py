@@ -8,7 +8,7 @@ class Rational:
                 gcd = math.gcd(num_value,den_value)
                 self.numerator = num_value / gcd
                 self.denominator = den_value / gcd
-        
+
     def show_int(self):
         return f'{self.numerator}/{self.denominator}'
 
