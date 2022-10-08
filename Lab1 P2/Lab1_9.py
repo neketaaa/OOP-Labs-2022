@@ -1,11 +1,6 @@
 from operator import attrgetter
 
 class Student:
-    name = None
-    surname = None
-    rb_number = None
-    grades = [None] * 10
-    aver_points = None
 
     def __init__(self, name_val, surname_val, rb_number_val, grades_val):
         self.name = name_val
