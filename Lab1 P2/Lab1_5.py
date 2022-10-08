@@ -15,12 +15,12 @@ class Rectangle:
             self.width = width_value
 
     def get(self):
-        return self
+        return f'length: {self.length} width: {self.width}'
 
 def main():
     example = Rectangle()
     example.set(0.03, 19.78)
-    print(f'length: {example.get().length} width: {example.get().width}')
+    print(example.get())
     print(f'area: {example.area()}')
     print(f'perimetr: {example.perimetr()}')
 
