@@ -1,21 +1,19 @@
 import argparse
+import math
 
 class Rational:
     def __init__(self, num_value = 1, den_value = 1):
-        self.numerator = num_value
-        self.denominator = den_value
+        if isinstance(num_value, int):
+            if isinstance(den_value, int) and den_value:
+                gcd = math.gcd(num_value,den_value)
+                self.numerator = num_value / gcd
+                self.denominator = den_value / gcd
+        
+    def show_int(self):
+        return f'{self.numerator}/{self.denominator}'
 
-        for i in range(min(num_value, den_value), 0, -1):
-            if not (int(num_value) / i) and not (int(den_value) / i):
-                self.numerator = int(num_value / i)
-                self.denominator = int(den_value / i)
-                break
-
-    def printer_int(self):
-        print(f'{self.numerator}/{self.denominator}')
-
-    def printer_flt(self):
-        print(float(self.numerator)/float(self.denominator))
+    def show_flt(self):
+        return float(self.numerator)/float(self.denominator)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -24,8 +22,8 @@ def main():
     args = parser.parse_args()
 
     example = Rational(args.numerator, args.denominator)
-    example.printer_int()
-    example.printer_flt()
+    print(example.show_int())
+    print(example.show_flt())
 
 if __name__ == "__main__":
     main()
