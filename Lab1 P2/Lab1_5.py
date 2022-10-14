@@ -1,6 +1,7 @@
 class Rectangle:
-    length = 1.0
-    width = 1.0
+    def __init__(self):
+        self.length = 1.0
+        self.width = 1.0
 
     def perimetr(self):
         return self.length + self.width
