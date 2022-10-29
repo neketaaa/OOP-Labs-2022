@@ -1,0 +1,24 @@
+{
+    "tickets": [
+        {
+            "_Ticket__number": "1",
+            "_Ticket__price": 50.0
+        },
+        {
+            "_Ticket__number": "2",
+            "_Ticket__price": 100
+        },
+        {
+            "_Ticket__number": "3",
+            "_Ticket__price": 50.0
+        },
+        {
+            "_Ticket__number": "4",
+            "_Ticket__price": 60.0
+        },
+        {
+            "_Ticket__number": "5",
+            "_Ticket__price": 50.0
+        }
+    ]
+}

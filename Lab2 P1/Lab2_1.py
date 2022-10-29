@@ -1,5 +1,7 @@
 import random
 import string
+import json
+import datetime
 
 
 def get_random_key():
@@ -13,6 +15,7 @@ class Ticket:
     def __init__(self, number, price):
         self.number = number
         self.price = price
+
 
     @property
     def number(self):
@@ -73,7 +76,7 @@ class Event:
         self.name = name
         self.amount = amount
         self.price = price
-        self.list = []
+        self.list = {'tickets': []}
         self.act_number = 0
 
     @property
@@ -109,21 +112,33 @@ class Event:
         else:
             raise ValueError
 
+    def push_json(self, item, file):
+        item = json.dumps(item, indent=2)
+        item = json.loads(str(item))
+        with open(file, 'w') as json_file:
+            json.dump(item, json_file, indent=4)
+
+    def pull_json(self, file_name, index):
+        with open(file_name, 'r') as json_file:
+            return json.load(json_file)['tickets'][index-1]
+
     def sell_ticket(self, type):
         key = get_random_key()
+        key = str(self.act_number +1)
         # Type: R/A/S/L
         if self.act_number < self.amount:
             match type:
                 case 'R':
-                    self.list.append(Ticket(key, self.price))
+                    self.list['tickets'].append(Ticket(key, self.price).__dict__)
                 case 'A':
-                    self.list.append(Advanced_ticket(key, self.price))
+                    self.list['tickets'].append(Advanced_ticket(key, self.price).__dict__)
                 case 'S':
-                    self.list.append(Student_ticket(key, self.price))
+                    self.list['tickets'].append(Student_ticket(key, self.price).__dict__)
                 case 'L':
-                    self.list.append(Late_ticket(key, self.price))
+                    self.list['tickets'].append(Late_ticket(key, self.price).__dict__)
+            self.push_json(self.list, 'tickets.json')
             self.act_number += 1
-            return self.list[self.act_number - 1]
+            return self.pull_json('tickets.json', self.act_number - 1)
         else:
             return 'Sold Out'
 
