@@ -2,23 +2,53 @@
     "tickets": [
         {
             "_Ticket__number": "1",
-            "_Ticket__price": 50.0
+            "_Ticket__price": 50.0,
+            "date": "2022-10-30 19:34:29.027528"
         },
         {
             "_Ticket__number": "2",
-            "_Ticket__price": 100
+            "_Ticket__price": 100,
+            "date": "2022-10-30 19:34:29.035560"
         },
         {
             "_Ticket__number": "3",
-            "_Ticket__price": 50.0
+            "_Ticket__price": 50.0,
+            "date": "2022-10-30 19:34:29.046550"
         },
         {
             "_Ticket__number": "4",
-            "_Ticket__price": 60.0
+            "_Ticket__price": 100,
+            "date": "2022-10-30 19:34:29.062309"
         },
         {
             "_Ticket__number": "5",
-            "_Ticket__price": 50.0
+            "_Ticket__price": 100,
+            "date": "2022-10-30 19:34:29.077597"
+        },
+        {
+            "_Ticket__number": "6",
+            "_Ticket__price": 100,
+            "date": "2022-10-30 19:34:29.093502"
+        },
+        {
+            "_Ticket__number": "7",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-30 19:34:29.110667"
+        },
+        {
+            "_Ticket__number": "8",
+            "_Ticket__price": 100,
+            "date": "2022-10-30 19:34:29.130435"
+        },
+        {
+            "_Ticket__number": "9",
+            "_Ticket__price": 100,
+            "date": "2022-10-30 19:34:29.154325"
+        },
+        {
+            "_Ticket__number": "10",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-30 19:34:29.177474"
         }
     ]
 }
