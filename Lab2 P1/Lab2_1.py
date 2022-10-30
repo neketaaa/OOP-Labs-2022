@@ -1,5 +1,6 @@
 import random
 import string
+import os
 import json
 from datetime import datetime, timedelta
 
@@ -103,6 +104,7 @@ class Event:
         else:
             raise ValueError
 
+
     @property
     def price(self):
         return self.__price
@@ -133,7 +135,7 @@ class Event:
 
     def pull_json(self, file_name, index):
         with open(file_name, 'r') as json_file:
-            return json.load(json_file)['tickets'][index-1]
+            return json.load(json_file)['tickets'][index]
 
     def sell_ticket(self, isStudent: bool):
         if not isinstance(isStudent, bool):
@@ -168,8 +170,5 @@ print(x.sell_ticket(False))
 print(x.sell_ticket(False))
 x.sell_ticket(False)
 x.sell_ticket(True)
-x.sell_ticket(False)
-x.sell_ticket(False)
-print(x.sell_ticket(True))
-print(x.sell_ticket(True))
+
 print(x.pull_json('tickets.json', 3))
