@@ -74,13 +74,28 @@ class Late_ticket(Ticket):
 
 class Event:
 
-    def __init__(self, name, amount, price, date: datetime):
+    def __init__(self, file_name, name, amount, price, date: datetime):
+        self.file_name = file_name
         self.name = name
         self.amount = amount
         self.price = price
         self.act_number = 0
         self.list = 'tickets'
         self.date = date
+
+    @property
+    def file_name(self):
+        return self.__file_name
+
+    @file_name.setter
+    def file_name(self, file_name):
+        if os.path.isfile(file_name) and '.json' in file_name:
+            self.__file_name = file_name
+        else:
+            raise ValueError
+
+
+
     @property
     def list(self):
         return self.__list
@@ -88,11 +103,11 @@ class Event:
     @list.setter
     def list(self, attr):
         self.__list = {attr: []}
-        if os.stat('tickets.json').st_size:
-            with open('tickets.json', 'r') as json_file:
+        if os.stat(self.file_name).st_size:
+            with open(self.file_name, 'r') as json_file:
                 self.act_number = len(json.load(json_file)['tickets'])
                 for index in range(self.act_number):
-                    self.__list[attr].append(self.pull_json('tickets.json',index))
+                    self.__list[attr].append(self.pull_json(self.file_name,index))
     @property
     def name(self):
         return self.__name
@@ -153,7 +168,7 @@ class Event:
             raise ValueError
         if self.act_number < self.amount:
             time = self.date - datetime.now()
-            key = str(self.act_number + 1)
+            key = str(self.act_number)
             if isStudent:
                 self.list['tickets'].append(Student_ticket(key, self.price).__dict__)
             else:
@@ -165,15 +180,15 @@ class Event:
                     else:
                         self.list['tickets'].append(Ticket(key, self.price).__dict__)
             self.act_number += 1
-            self.push_json(self.list, 'tickets.json')
-            return self.pull_json('tickets.json', self.act_number-1)
+            self.push_json(self.list, self.file_name)
+            return self.pull_json(self.file_name, self.act_number-1)
         else:
             return 'Sold Out'
 
 
 
 
-x = Event('Lesson', 16, 100, datetime(2022,11,15))
+x = Event('tickets.json', 'Lesson', 16, 100, datetime(2022,11,15))
 print(x.sell_ticket(True))
 print(x.sell_ticket(False))
 print(x.sell_ticket(True))
