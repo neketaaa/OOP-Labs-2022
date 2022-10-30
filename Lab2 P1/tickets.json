@@ -1,0 +1,100 @@
+{
+    "tickets": [
+        {
+            "ticket_type": "Student",
+            "_Ticket__number": "qOD9qZ",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-31 02:01:51.172686"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "huZkTT",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:01:51.180655"
+        },
+        {
+            "ticket_type": "Student",
+            "_Ticket__number": "Yul0wC",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-31 02:01:51.186637"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "4PBghm",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:01:51.192700"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "Cc6ZL0",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:01:51.199641"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "mDf9BC",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:01:51.205716"
+        },
+        {
+            "ticket_type": "Student",
+            "_Ticket__number": "Wg5cM7",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-31 02:01:51.211609"
+        },
+        {
+            "ticket_type": "Student",
+            "_Ticket__number": "jBdslx",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-31 02:02:08.595292"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "DMuPKA",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:02:08.609513"
+        },
+        {
+            "ticket_type": "Student",
+            "_Ticket__number": "vUmhXy",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-31 02:02:08.624227"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "3B54gA",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:02:08.638207"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "39IBBd",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:02:08.652610"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "LIX7q2",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:02:08.666054"
+        },
+        {
+            "ticket_type": "Student",
+            "_Ticket__number": "z2pLAS",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-31 02:02:08.681308"
+        },
+        {
+            "ticket_type": "Student",
+            "_Ticket__number": "Onwi0h",
+            "_Ticket__price": 50.0,
+            "date": "2022-10-31 02:02:24.094673"
+        },
+        {
+            "ticket_type": "Regular",
+            "_Ticket__number": "5y1tcg",
+            "_Ticket__price": 100,
+            "date": "2022-10-31 02:02:24.102526"
+        }
+    ]
+}

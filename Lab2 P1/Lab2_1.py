@@ -4,16 +4,16 @@ import os
 import json
 from datetime import datetime, timedelta
 
-
-# def get_random_key():
-#     letters = string.ascii_lowercase + string.ascii_uppercase + string.digits
-#     result_str = ''.join(random.choice(letters) for i in range(6))
-#     return result_str
+def get_random_key():
+     letters = string.ascii_lowercase + string.ascii_uppercase + string.digits
+     result_str = ''.join(random.choice(letters) for i in range(6))
+     return result_str
 
 
 class Ticket:
 
-    def __init__(self, number, price):
+    def __init__(self, number, price, ticket_type = 'Regular'):
+        self.ticket_type = ticket_type
         self.number = number
         self.price = price
         self.date = str(datetime.now())
@@ -48,7 +48,7 @@ class Ticket:
 class Advanced_ticket(Ticket):
 
     def __init__(self, number, price):
-        super().__init__(number, price * 0.6)
+        super().__init__(number, price * 0.6, 'Advanced')
 
     def __str__(self):
         return f'Ticket type: Advanced\nNumber: {self.number}\nPrice: {self.price}'
@@ -57,7 +57,7 @@ class Advanced_ticket(Ticket):
 class Student_ticket(Ticket):
 
     def __init__(self, number, price):
-        super().__init__(number, price * 0.5)
+        super().__init__(number, price * 0.5, 'Student')
 
     def __str__(self):
         return f'Ticket type: Student\nNumber: {self.number}\nPrice: {self.price}'
@@ -66,7 +66,7 @@ class Student_ticket(Ticket):
 class Late_ticket(Ticket):
 
     def __init__(self, number, price):
-        super().__init__(number, price * 1.1)
+        super().__init__(number, price * 1.1, 'Late')
 
     def __str__(self):
         return f'Ticket type: Late\nNumber: {self.number}\nPrice: {self.price}'
@@ -161,7 +161,15 @@ class Event:
 
     def pull_json(self, file_name, index):
         with open(file_name, 'r') as json_file:
-            return json.load(json_file)['tickets'][index]
+             return json.load(json_file)['tickets'][index]
+
+    def constr_by_num(self, number):
+        for i in range(self.act_number-1):
+            temp_num = self.pull_json(self.file_name, i)
+            if temp_num['_Ticket__number'] == number:
+                return temp_num
+
+        return 'Fault'
 
     def sell_ticket(self, isStudent: bool):
         if not isinstance(isStudent, bool):
@@ -169,6 +177,7 @@ class Event:
         if self.act_number < self.amount:
             time = self.date - datetime.now()
             key = str(self.act_number)
+            key = get_random_key()
             if isStudent:
                 self.list['tickets'].append(Student_ticket(key, self.price).__dict__)
             else:
@@ -197,4 +206,4 @@ print(x.sell_ticket(False))
 x.sell_ticket(False)
 x.sell_ticket(True)
 
-print(x.pull_json('tickets.json', 3))
+print(x.constr_by_num('qOD9qZ'))
