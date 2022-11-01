@@ -2,10 +2,12 @@ from datetime import datetime
 
 class Pizza:
 
-    def __init__(self, name: str, isThick: bool, ingredients = []):
+    def __init__(self, name: str, isThick: bool, ingredients = [], price=100):
         self.name = name
         self.isThick = isThick
         self.ingredients = ingredients
+        self.price = price
+
 
     @property
     def name(self):
@@ -15,6 +17,18 @@ class Pizza:
     def name(self, name):
         if isinstance(name, str):
             self.__name = name
+        else:
+            raise ValueError
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, price):
+        print(price)
+        if isinstance(price, float | int):
+            self.__price = price
         else:
             raise ValueError
 
@@ -57,7 +71,7 @@ class Pizza:
         self.add_ingredient(ingredients)
 
     def __str__(self):
-        pizza = self.name
+        pizza = self.name + '\nPrice: ' + str(self.price)
         if self.isThick:
             pizza += '\nThick base'
         else:
@@ -80,19 +94,19 @@ class Pizza_of_the_day(Pizza):
         day = int(datetime.now().strftime('%w'))
         match day:
             case 1:
-                super().__init__('Monday pizza', False, ['cheese', 'ham', 'onions', 'pineapple', 'pesto_sause'])
+                super().__init__('Monday pizza', False, ['cheese', 'ham', 'onions', 'pineapple', 'pesto_sause'], 150)
             case 2:
-                super().__init__('Tuesday pizza', True, ['onions', 'bacon', 'tomatoes', 'burger_sause', 'sausage', 'cheese'])
+                super().__init__('Tuesday pizza', True, ['onions', 'bacon', 'tomatoes', 'burger_sause', 'sausage', 'cheese'], 150)
             case 3:
-                super().__init__('Wednesday pizza', True, ['cheese', 'mushrooms', 'onions', 'peppers', 'sweetcorn', 'mayo_sause'])
+                super().__init__('Wednesday pizza', True, ['cheese', 'mushrooms', 'onions', 'peppers', 'sweetcorn', 'mayo_sause'], 150)
             case 4:
-                super().__init__('Thursday pizza', False, ['ketchup', 'peperoni', 'peppers', 'bacon', 'tomatoes'])
+                super().__init__('Thursday pizza', False, ['ketchup', 'peperoni', 'peppers', 'bacon', 'tomatoes'], 150)
             case 5:
-                super().__init__('Friday pizza', True, ['ketchup', 'mushrooms', 'sweetcorn', 'sausage'])
+                super().__init__('Friday pizza', True, ['ketchup', 'mushrooms', 'sweetcorn', 'sausage'], 150)
             case 6:
-                super().__init__('Saturday pizza', False, ['bacon', 'pesto_sause', 'cheese', 'peppers'])
+                super().__init__('Saturday pizza', False, ['bacon', 'pesto_sause', 'cheese', 'peppers'], 150)
             case 0:
-                super().__init__('Sunday pizza', True, ['mayo_sause', 'sausage', 'bacon', 'ham', 'peperoni', 'burger_sause'])
+                super().__init__('Sunday pizza', True, ['mayo_sause', 'sausage', 'bacon', 'ham', 'peperoni', 'burger_sause'], 150)
 
 x = Pizza_of_the_day()
 print(x)
