@@ -12,7 +12,7 @@ def get_random_key():
 
 class Ticket:
 
-    def __init__(self, number, price, ticket_type = 'Regular'):
+    def __init__(self, number, price, ticket_type = 'Regular' ):
         self.ticket_type = ticket_type
         self.number = number
         self.price = price
@@ -74,7 +74,7 @@ class Late_ticket(Ticket):
 
 class Event:
 
-    def __init__(self, file_name, name, amount, price, date: datetime):
+    def __init__(self, file_name, name, amount, price, date: datetime, adv_date=0, late_date=0):
         self.file_name = file_name
         self.name = name
         self.amount = amount
@@ -82,6 +82,8 @@ class Event:
         self.act_number = 0
         self.list = 'tickets'
         self.date = date
+        self.adv_date = adv_date
+        self.late_date = late_date
 
     @property
     def file_name(self):
@@ -153,6 +155,28 @@ class Event:
         else:
             raise ValueError
 
+    @property
+    def adv_date(self):
+        return self.__adv_date
+
+    @adv_date.setter
+    def adv_date(self, adv_date):
+        if isinstance(adv_date, int) and adv_date > 0:
+            self.__adv_date = adv_date
+        else:
+            raise  ValueError
+
+    @property
+    def late_date(self):
+        return self.__late_date
+
+    @late_date.setter
+    def late_date(self, late_date):
+        if isinstance(late_date, int) and late_date > 0 and late_date <= self.adv_date:
+            self.__late_date = late_date
+        else:
+            raise ValueError
+
     def push_json(self, item, file):
         item = json.dumps(item, indent=2)
         item = json.loads(str(item))
@@ -176,15 +200,15 @@ class Event:
             raise ValueError
         if self.act_number < self.amount:
             time = self.date - datetime.now()
-            key = str(self.act_number)
+            #key = str(self.act_number)
             key = get_random_key()
             if isStudent:
                 self.list['tickets'].append(Student_ticket(key, self.price).__dict__)
             else:
-                if time.days > 60:
+                if time.days > self.adv_date:
                     self.list['tickets'].append(Advanced_ticket(key, self.price).__dict__)
                 else:
-                    if time.days < 10:
+                    if time.days < self.late_date:
                         self.list['tickets'].append(Late_ticket(key, self.price).__dict__)
                     else:
                         self.list['tickets'].append(Ticket(key, self.price).__dict__)
@@ -197,7 +221,7 @@ class Event:
 
 
 
-x = Event('tickets.json', 'Lesson', 16, 100, datetime(2022,11,15))
+x = Event('tickets.json', 'Lesson', 16, 100, datetime(2022,11,15), 60, 10)
 print(x.sell_ticket(True))
 print(x.sell_ticket(False))
 print(x.sell_ticket(True))
