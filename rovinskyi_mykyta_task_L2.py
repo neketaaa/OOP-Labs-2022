@@ -196,7 +196,7 @@ class Organisation:
     def check_exp(self, number):
         iter_workers = iter(self.workers)
         more_exp = 0
-        for worker in self.workers
+        for worker in self.workers:
             if next(iter_workers).exp > number:
                 more_exp += 1
         return more_exp
