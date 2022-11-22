@@ -28,7 +28,17 @@ class Rational:
 
     def __str__(self):
         gcd = math.gcd(self.numerator, self.denominator)
-        return f'{self.numerator // gcd} / {self.denominator // gcd}'
+        self.numerator //= gcd
+        self.denominator //= gcd
+        fraction = f''
+        if self.numerator != 0:
+            fraction += f'{self.numerator}'
+        else:
+            fraction += f'0'
+        if self.denominator != 1:
+            fraction += f' / {self.denominator}'
+        return fraction
+
 
     def __add__(self, other):
         if isinstance(other, Rational):
