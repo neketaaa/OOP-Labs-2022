@@ -120,12 +120,6 @@ class Composition:
             raise TypeError
 
 
-
-
-
-    def __str__(self):
-        return f'{self.goods}'
-
 x = Composition()
 
 x += Goods('name', 100, 1)

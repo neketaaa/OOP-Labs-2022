@@ -22,7 +22,7 @@ class Rational:
 
     @denominator.setter
     def denominator(self, denominator):
-        if not isinstance(denominator, int) and denominator != 0:
+        if not isinstance(denominator, int) and denominator:
             raise ValueError
         self.__denominator = denominator
 
@@ -31,6 +31,9 @@ class Rational:
         self.numerator //= gcd
         self.denominator //= gcd
         fraction = f''
+        if self.numerator < 0 and self.denominator < 0:
+            self.numerator *= -1
+            self.denominator *= -1
         if self.numerator != 0:
             fraction += f'{self.numerator}'
         else:
